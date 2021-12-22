@@ -27,18 +27,18 @@ public class NoseSharedPreferences {
         return isCheck;
     }
 
-    public void UpdateArtist(String artist) {
+    public void setTime(String time) {
         preferences = context.getSharedPreferences(STORAGE, Context.MODE_PRIVATE);
 
         android.content.SharedPreferences.Editor editor = preferences.edit();
-        editor.putString("artist", artist);
+        editor.putString("time", time);
         editor.apply();
     }
 
-    public String getArtist() {
+    public String getTime() {
         preferences = context.getSharedPreferences(STORAGE, Context.MODE_PRIVATE);
-        String artist = preferences.getString("artist", null);
-        return artist;
+        String time = preferences.getString("time", null);
+        return time;
     }
 
     public void UpdateAlbum(String album) {

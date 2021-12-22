@@ -97,4 +97,9 @@
     </string>
     <string name="action_settings">Settings</string>
     <string name="schedule_Reminders">Đặt lịch nhắc trên thiết bị</string>
+    <string name="toast_terms_privacy">Bạn cần đồng ý chính sách và bảo mật</string>
+    <string name="ok">Đồng ý</string>
+    <string name="cancel">Hủy</string>
+    <string name="add_device">Thêm Device</string>
+    <string name="enter_time">Nhập thời gian nhắc</string>
 </resources>

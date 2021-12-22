@@ -31,7 +31,7 @@ public class ListDevice extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_device);
         ActionBar actionBar = getSupportActionBar();
-        actionBar.setTitle("Thêm thiết bị");
+        actionBar.setTitle(R.string.add_device);
         listView = findViewById(R.id.list);
         initBluetooth();
         pairDevice();
@@ -66,7 +66,6 @@ public class ListDevice extends AppCompatActivity {
         }
 
         if (!BTAdapter.isEnabled()) {
-            Log.d("HoangCV", "initBluetooth: ");
             Intent enableBT = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
             startActivityForResult(enableBT, 1);
         }
@@ -89,5 +88,17 @@ public class ListDevice extends AppCompatActivity {
         }
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+    }
+
+
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
+    }
 }
 

@@ -54,25 +54,31 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 {
-                    Intent intent = new Intent(MainActivity.this, ListDevice.class);
-                    startActivity(intent);
+                    if (mTermsPrivacy.isChecked()) {
+                        Intent intent = new Intent(MainActivity.this, ListDevice.class);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                        startActivity(intent);
+                    } else {
+                        Toast.makeText(MainActivity.this, R.string.toast_terms_privacy, Toast.LENGTH_LONG).show();
+                    }
                 }
             }
         });
     }
 
-    private void loadInit(){
-        sharedPreferences= new NoseSharedPreferences(this);
-        if(sharedPreferences!= null) {
+    private void loadInit() {
+        sharedPreferences = new NoseSharedPreferences(this);
+        if (sharedPreferences != null) {
             boolean TermsPrivacy = sharedPreferences.getchecked();
-            if(TermsPrivacy){
+            if (TermsPrivacy) {
                 Intent intent = new Intent(MainActivity.this, ListDevice.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NO_ANIMATION);
                 startActivity(intent);
             }
         }
     }
 
-    private void init(){
+    private void init() {
         mNameApp = findViewById(R.id.name_app);
         mImageDevice = findViewById(R.id.image_device);
         mTermsPrivacy = findViewById(R.id.terms_privacy);
