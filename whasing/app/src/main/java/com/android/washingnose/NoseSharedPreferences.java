@@ -27,134 +27,29 @@ public class NoseSharedPreferences {
         return isCheck;
     }
 
-    public void setTime(String time) {
+    public void setTime(String time, String address) {
         preferences = context.getSharedPreferences(STORAGE, Context.MODE_PRIVATE);
-
-        android.content.SharedPreferences.Editor editor = preferences.edit();
-        editor.putString("time", time);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putString(address+"String", time);
         editor.apply();
     }
 
-    public String getTime() {
+    public String getTime(String address) {
         preferences = context.getSharedPreferences(STORAGE, Context.MODE_PRIVATE);
-        String time = preferences.getString("time", null);
+        String time = preferences.getString(address+"String", null);
         return time;
     }
 
-    public void UpdateAlbum(String album) {
+    public void setSchedule(Boolean schedule, String address) {
         preferences = context.getSharedPreferences(STORAGE, Context.MODE_PRIVATE);
-        android.content.SharedPreferences.Editor editor = preferences.edit();
-        editor.putString("album", album);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putBoolean(address+"Boolean", schedule);
         editor.apply();
     }
 
-    public String getAlbum() {
+    public Boolean getSchedule(String address) {
         preferences = context.getSharedPreferences(STORAGE, Context.MODE_PRIVATE);
-        String album = preferences.getString("album", null);
-        return album;
+        Boolean schedule = preferences.getBoolean(address+"Boolean", false);
+        return schedule;
     }
-
-    public String getFile() {
-        preferences = context.getSharedPreferences(STORAGE, Context.MODE_PRIVATE);
-        String file = preferences.getString("file", null);
-        return file;
-    }
-
-    public void UpdateFile(String file) {
-        preferences = context.getSharedPreferences(STORAGE, Context.MODE_PRIVATE);
-        android.content.SharedPreferences.Editor editor = preferences.edit();
-        editor.putString("file", file);
-        editor.apply();
-    }
-
-    public void UpdateIndex(int index) {
-        preferences = context.getSharedPreferences(STORAGE, Context.MODE_PRIVATE);
-        android.content.SharedPreferences.Editor editor = preferences.edit();
-        editor.putInt("possision", index);
-        editor.apply();
-    }
-
-    public int getIndex() {
-        preferences = context.getSharedPreferences(STORAGE, Context.MODE_PRIVATE);
-        int index = preferences.getInt("possision", 0);
-        return index;
-    }
-
-    public void UpdateIsPlaying(Boolean isplaying) {
-        preferences = context.getSharedPreferences(STORAGE, Context.MODE_PRIVATE);
-        android.content.SharedPreferences.Editor editor = preferences.edit();
-        editor.putBoolean("isplaying", isplaying);
-        editor.apply();
-    }
-
-    public Boolean getIsPlaying() {
-        preferences = context.getSharedPreferences(STORAGE, Context.MODE_PRIVATE);
-        Boolean isplaying = preferences.getBoolean("isplaying", false);
-        return isplaying;
-    }
-
-    public void UpdateDuration(int Duration) {
-        preferences = context.getSharedPreferences(STORAGE, Context.MODE_PRIVATE);
-        android.content.SharedPreferences.Editor editor = preferences.edit();
-        editor.putInt("Duration", Duration);
-        editor.apply();
-    }
-
-    public int getDuration() {
-        preferences = context.getSharedPreferences(STORAGE, Context.MODE_PRIVATE);
-        int Duration = preferences.getInt("Duration", 0);
-        return Duration;
-    }
-
-    public void UpdateCurrentPossision(int possision) {
-        preferences = context.getSharedPreferences(STORAGE, Context.MODE_PRIVATE);
-        android.content.SharedPreferences.Editor editor = preferences.edit();
-        editor.putInt("current", possision);
-        editor.apply();
-    }
-
-    public int getCurrentPossision() {
-        preferences = context.getSharedPreferences(STORAGE, Context.MODE_PRIVATE);
-        int possision = preferences.getInt("current", 0);
-        return possision;
-    }
-
-    public void UpdateStatus(boolean status) {
-        preferences = context.getSharedPreferences(STORAGE, Context.MODE_PRIVATE);
-        android.content.SharedPreferences.Editor editor = preferences.edit();
-        editor.putBoolean("status", status);
-        editor.apply();
-    }
-
-    public boolean getStatus() {
-        preferences = context.getSharedPreferences(STORAGE, Context.MODE_PRIVATE);
-        boolean status = preferences.getBoolean("status", false);
-        return status;
-    }
-    public void UpdateRepeat(int repeat) {
-        preferences = context.getSharedPreferences(STORAGE, Context.MODE_PRIVATE);
-        android.content.SharedPreferences.Editor editor = preferences.edit();
-        editor.putInt("repeat", repeat);
-        editor.apply();
-    }
-
-    public Integer getRepeat() {
-        preferences = context.getSharedPreferences(STORAGE, Context.MODE_PRIVATE);
-        int repeat = preferences.getInt("repeat", -2);
-        return repeat;
-    }
-    public void UpdateShuffler(Boolean shuffler) {
-        preferences = context.getSharedPreferences(STORAGE, Context.MODE_PRIVATE);
-        android.content.SharedPreferences.Editor editor = preferences.edit();
-        editor.putBoolean("shuffler", shuffler);
-        editor.apply();
-    }
-
-    public Boolean getShuffler() {
-        preferences = context.getSharedPreferences(STORAGE, Context.MODE_PRIVATE);
-        Boolean shuffler = preferences.getBoolean("shuffler", false);
-        return shuffler;
-    }
-
-
 }

@@ -58,6 +58,7 @@ public class MyAdapter extends BaseAdapter implements ListAdapter {
             public void onClick(View v) {
                 Toast.makeText(parent.getContext(), "Address: "+device.macAddress, Toast.LENGTH_LONG).show();
                 Intent intent = new Intent(parent.getContext(), ControlDevice.class);
+                intent.putExtra("address",device.macAddress);
                 parent.getContext().startActivity(intent);
             }
         });

@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Washing Nose</string>
     <string name="Start">Bắt đầu</string>
-    <string name="Terms_Privacy">Đồng ý điều khoản và chính sách bảo mật</string>
+    <string name="Terms_Privacy"><u>Đồng ý điều khoản và chính sách bảo mật</u></string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="add">Thêm</string>
@@ -100,6 +100,6 @@
     <string name="toast_terms_privacy">Bạn cần đồng ý chính sách và bảo mật</string>
     <string name="ok">Đồng ý</string>
     <string name="cancel">Hủy</string>
-    <string name="add_device">Thêm Device</string>
+    <string name="add_device">Thêm Thiết bị</string>
     <string name="enter_time">Nhập thời gian nhắc</string>
 </resources>

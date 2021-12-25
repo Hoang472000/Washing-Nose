@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
                 {
                     if (mTermsPrivacy.isChecked()) {
                         Intent intent = new Intent(MainActivity.this, ListDevice.class);
-                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(intent);
                     } else {
                         Toast.makeText(MainActivity.this, R.string.toast_terms_privacy, Toast.LENGTH_LONG).show();
@@ -72,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
             boolean TermsPrivacy = sharedPreferences.getchecked();
             if (TermsPrivacy) {
                 Intent intent = new Intent(MainActivity.this, ListDevice.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
             }
         }

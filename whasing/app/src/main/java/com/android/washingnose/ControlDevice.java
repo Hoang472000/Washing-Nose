@@ -6,7 +6,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.CompoundButton;
 import android.widget.Switch;
 import android.widget.TextView;
@@ -19,17 +21,29 @@ public class ControlDevice extends AppCompatActivity {
     private Switch mSchedule;
     private TextView mTime;
     private NoseSharedPreferences sharedPreferences;
+    private String mAddress;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_control_device);
+
+        Bundle bundle = getIntent().getExtras();
+        if(bundle.getString("address") != null){
+            mAddress = bundle.getString("address");
+        }
+
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
+
         init();
+
         sharedPreferences = new NoseSharedPreferences(getApplicationContext());
-        if(sharedPreferences != null){
-            mTime.setText(sharedPreferences.getTime());
+        if (sharedPreferences != null) {
+            mSchedule.setChecked(sharedPreferences.getSchedule(mAddress));
+            if (mSchedule.isChecked()) {
+                mTime.setText(sharedPreferences.getTime(mAddress));
+            }
         }
         mSchedule.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -48,20 +62,22 @@ public class ControlDevice extends AppCompatActivity {
                                                       int minute) {
 
                                     mTime.setText(hourOfDay + ":" + minute);
-                                    sharedPreferences.setTime(hourOfDay + ":" + minute);
+                                    sharedPreferences.setTime(hourOfDay + ":" + minute, mAddress);
+                                    sharedPreferences.setSchedule(true,mAddress);
                                 }
                             }, mHour, mMinute, false);
                     timePickerDialog.setTitle(R.string.enter_time);
-                    timePickerDialog.setButton(TimePickerDialog.BUTTON_POSITIVE, "" + R.string.ok, new DialogInterface.OnClickListener() {
+                    timePickerDialog.setButton(TimePickerDialog.BUTTON_POSITIVE, "Đồng ý", new DialogInterface.OnClickListener() {
 
                         public void onClick(DialogInterface dialog, int which) {
-                            // do something
                         }
                     });
-                    timePickerDialog.setButton(TimePickerDialog.BUTTON_NEGATIVE, "" + R.string.cancel, new DialogInterface.OnClickListener() {
+                    timePickerDialog.setButton(TimePickerDialog.BUTTON_NEGATIVE, "Hủy", new DialogInterface.OnClickListener() {
 
                         public void onClick(DialogInterface dialog, int which) {
-                            // do something
+                            mSchedule.setChecked(false);
+                            sharedPreferences.setSchedule(false,mAddress);
+                            mTime.setText("");
                         }
                     });
                     timePickerDialog.show();
