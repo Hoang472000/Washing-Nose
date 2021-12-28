@@ -102,4 +102,6 @@
     <string name="cancel">Hủy</string>
     <string name="add_device">Thêm Thiết bị</string>
     <string name="enter_time">Nhập thời gian nhắc</string>
+    <string name="add_time">"Thêm thời gian nhắc "</string>
+    <string name="select_time">Chọn thời gian nhắc việc</string>
 </resources>

@@ -1,11 +1,11 @@
 package com.android.washingnose;
 
+import android.app.Activity;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -35,18 +35,6 @@ public class ListDevice extends AppCompatActivity {
         listView = findViewById(R.id.list);
         initBluetooth();
         pairDevice();
-        //onClick();
-    }
-
-    private void onClick(){
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Device device = (Device) myAdapter.getItem(position);
-                //Làm gì đó khi chọn sản phẩm (ví dụ tạo một Activity hiện thị chi tiết, biên tập ..)
-                Toast.makeText(ListDevice.this, device.macAddress, Toast.LENGTH_LONG).show();
-            }
-        });
     }
 
     private void initBluetooth() {
@@ -89,16 +77,29 @@ public class ListDevice extends AppCompatActivity {
     }
 
     @Override
-    protected void onResume() {
-        super.onResume();
-    }
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 1)
+        {
+            switch (resultCode)
+            {
+                // When the user press OK button.
+                case Activity.RESULT_OK:
+                {
+                    pairDevice();
+                }
+                break;
 
-
-
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-        finish();
+                // When the user press cancel button or back button.
+                case Activity.RESULT_CANCELED:
+                {
+                    finish();
+                }
+                break;
+                default:
+                    break;
+            }
+        }
     }
 }
 
